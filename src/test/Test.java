@@ -31,7 +31,7 @@ public class Test {
 			@Override
 			public void run() {
 				while (true) {
-					List<String> a = testMap.get("A");
+					List<String> a = new ArrayList<String>(testMap.get("A"));
 					for (String str : a) {
 						System.out.println(str);
 					}
