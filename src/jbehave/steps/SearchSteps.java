@@ -20,7 +20,6 @@ public class SearchSteps extends BasePage {
 	@Given("I access Baidu site")
 	public void iAccessBaiduSite() throws Exception {
 		PageContainer.getInstance().getBaiduPage().nevigateToHomePage();
-		System.out.println("*****************************wok");
 	}
 
 	@When("I search text on Baidu")
@@ -31,5 +30,10 @@ public class SearchSteps extends BasePage {
 	@Then("I should see the search result")
 	public void iShouldSeeTheSearchResult() {
 		Assert.assertTrue(PageContainer.getInstance().getBaiduPage().isExpectedResultShowUp());
+	}
+
+	@When("I nevigate a result link randomly")
+	public void iNevigateAResultLinkRandomly() {
+		PageContainer.getInstance().getBaiduPage().searchSpecificTextOnPage();
 	}
 }

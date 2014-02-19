@@ -1,5 +1,5 @@
 <xref>
-  <whenMade>1392789595378</whenMade>
+  <whenMade>1392790112644</whenMade>
   <createdBy>JBehave</createdBy>
   <metaFilter></metaFilter>
   <meta/>
@@ -15,12 +15,13 @@
 Given I access Baidu site
 When I search text on Baidu
 Then I should see the search result
+When I nevigate a result link randomly
 
 
 </scenarios>
       <passed>true</passed>
-      <started>1392789583382</started>
-      <duration>11364</duration>
+      <started>1392790097788</started>
+      <duration>14232</duration>
     </story>
   </stories>
   <stepMatches>
@@ -33,6 +34,18 @@ Then I should see the search result
           <story>jbehave/resources/stories/searchTextDemo.story</story>
           <scenario>Verify the search function</scenario>
           <step>Given I access Baidu site</step>
+        </use>
+      </usages>
+    </stepMatch>
+    <stepMatch>
+      <type>WHEN</type>
+      <annotatedPattern>I nevigate a result link randomly</annotatedPattern>
+      <resolvedPattern>I\s+nevigate\s+a\s+result\s+link\s+randomly</resolvedPattern>
+      <usages>
+        <use>
+          <story>jbehave/resources/stories/searchTextDemo.story</story>
+          <scenario>Verify the search function</scenario>
+          <step>When I nevigate a result link randomly</step>
         </use>
       </usages>
     </stepMatch>

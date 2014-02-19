@@ -29,4 +29,9 @@ public class BaiduPage extends BasePage {
 	public boolean isExpectedResultShowUp() {
 		return true;
 	}
+
+	public void reandomlyNevigateResultLink() {
+		WebElement firstLink = helper.findElmenetBy(By.cssSelector("content_left"));
+		helper.clickOn(firstLink);
+	}
 }

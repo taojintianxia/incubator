@@ -3,5 +3,6 @@
 <step outcome="successful">Given I access Baidu site</step>
 <step outcome="successful">When I search text on Baidu</step>
 <step outcome="successful">Then I should see the search result</step>
+<step outcome="successful">When I nevigate a result link randomly</step>
 </scenario>
 </story>
