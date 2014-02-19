@@ -30,7 +30,7 @@ public class PageContainer {
 		} else {
 			synchronized (PageContainer.class) {
 				if (pageContainer == null) {
-					pageContainer = new PageContainer();
+					pageContainer = new PageContainer(WebDriverHelper.getInstance());
 				}
 			}
 			return pageContainer;

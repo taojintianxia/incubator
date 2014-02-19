@@ -28,7 +28,7 @@ public class WebDriverHelper {
 
 	private WebDriver driver;
 
-	private static WebDriverHelper helper;
+	private static volatile WebDriverHelper helper;
 
 	private WebDriverHelper() {
 		initialize();
@@ -65,9 +65,16 @@ public class WebDriverHelper {
 	}
 
 	public static WebDriverHelper getInstance() {
-		if (helper == null)
-			helper = new WebDriverHelper();
-		return helper;
+		if (helper != null) {
+			return helper;
+		} else {
+			synchronized (WebDriverHelper.class) {
+				if (helper == null) {
+					helper = new WebDriverHelper();
+				}
+			}
+			return helper;
+		}
 	}
 
 	public void start() {
@@ -88,6 +95,10 @@ public class WebDriverHelper {
 		}
 	}
 
+	public WebElement findElmenetBy(By by) {
+		return driver.findElement(by);
+	}
+
 	public void typeTextBoxById(String idLocator, String typeContent) {
 		try {
 			Capabilities cp = ((RemoteWebDriver) driver).getCapabilities();
@@ -100,6 +111,11 @@ public class WebDriverHelper {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+
+	public void typeText(String text, WebElement element) {
+		element.clear();
+		element.sendKeys(text);
 	}
 
 	public void typeTextBoxByCSS(String cssLocator, String typeContent) {
@@ -128,6 +144,10 @@ public class WebDriverHelper {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
+
+	public void clickOn(WebElement element) {
+		element.click();
 	}
 
 	public void clickByCSS(String cssLocator) {

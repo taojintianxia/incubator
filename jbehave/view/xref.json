@@ -1,0 +1,59 @@
+{"xref": {
+  "whenMade": 1392789595378,
+  "createdBy": "JBehave",
+  "metaFilter": "",
+  "meta": [
+  ],
+  "stories": [
+    {
+      "description": "",
+      "narrative": "",
+      "name": "searchTextDemo.story",
+      "path": "jbehave/resources/stories/searchTextDemo.story",
+      "html": "jbehave.resources.stories.searchTextDemo.html",
+      "meta": "",
+      "scenarios": "Scenario:Verify the search function\u000aGiven I access Baidu site\u000aWhen I search text on Baidu\u000aThen I should see the search result\u000a\u000a\u000a",
+      "passed": true,
+      "started": 1392789583382,
+      "duration": 11364
+    }
+  ],
+  "stepMatches": [
+    {
+      "type": "GIVEN",
+      "annotatedPattern": "I access Baidu site",
+      "resolvedPattern": "I\\s+access\\s+Baidu\\s+site",
+      "usages": [
+        {
+          "story": "jbehave/resources/stories/searchTextDemo.story",
+          "scenario": "Verify the search function",
+          "step": "Given I access Baidu site"
+        }
+      ]
+    },
+    {
+      "type": "THEN",
+      "annotatedPattern": "I should see the search result",
+      "resolvedPattern": "I\\s+should\\s+see\\s+the\\s+search\\s+result",
+      "usages": [
+        {
+          "story": "jbehave/resources/stories/searchTextDemo.story",
+          "scenario": "Verify the search function",
+          "step": "Then I should see the search result"
+        }
+      ]
+    },
+    {
+      "type": "WHEN",
+      "annotatedPattern": "I search text on Baidu",
+      "resolvedPattern": "I\\s+search\\s+text\\s+on\\s+Baidu",
+      "usages": [
+        {
+          "story": "jbehave/resources/stories/searchTextDemo.story",
+          "scenario": "Verify the search function",
+          "step": "When I search text on Baidu"
+        }
+      ]
+    }
+  ]
+}}

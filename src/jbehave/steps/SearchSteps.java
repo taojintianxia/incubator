@@ -2,8 +2,11 @@ package jbehave.steps;
 
 import jbehave.base.BasePage;
 import jbehave.base.PageContainer;
+import junit.framework.Assert;
 
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
 
 /**
  * 
@@ -15,7 +18,18 @@ import org.jbehave.core.annotations.Given;
 
 public class SearchSteps extends BasePage {
 	@Given("I access Baidu site")
-	public void iSearchFor(String searchItem) throws Exception {
+	public void iAccessBaiduSite() throws Exception {
 		PageContainer.getInstance().getBaiduPage().nevigateToHomePage();
+		System.out.println("*****************************wok");
+	}
+
+	@When("I search text on Baidu")
+	public void iSearchTextOnBaidu() {
+		PageContainer.getInstance().getBaiduPage().searchSpecificTextOnPage();
+	}
+
+	@Then("I should see the search result")
+	public void iShouldSeeTheSearchResult() {
+		Assert.assertTrue(PageContainer.getInstance().getBaiduPage().isExpectedResultShowUp());
 	}
 }

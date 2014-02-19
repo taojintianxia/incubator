@@ -1,0 +1,7 @@
+<story path="jbehave/resources/stories/searchTextDemo.story" title="">
+<scenario keyword="Scenario:" title="Verify the search function">
+<step outcome="successful">Given I access Baidu site</step>
+<step outcome="successful">When I search text on Baidu</step>
+<step outcome="successful">Then I should see the search result</step>
+</scenario>
+</story>
