@@ -277,7 +277,7 @@ public class WebDriverHelper {
 	}
 
 	public void openURL(String url) {
-		driver.get(url);
+		driver.get(SeleniumUtil.getTargetUrl() + url);
 	}
 
 }

@@ -16,12 +16,12 @@ import org.openqa.selenium.WebElement;
 public class BaiduPage extends BasePage {
 
 	public void nevigateToHomePage() {
-		helper.openURL("http://www.baidu.com");
+		helper.openURL("/");
 	}
 
 	public void searchSpecificTextOnPage() {
-		WebElement searchField = helper.findElmenetBy(By.id("kw"));
-		WebElement searchButton = helper.findElmenetBy(By.id("su"));
+		WebElement searchField = helper.findElmenetBy(By.id("#gs_htif0"));
+		WebElement searchButton = helper.findElmenetBy(By.id("gbqfba"));
 		helper.typeText("哈喽你好三中姐", searchField);
 		helper.clickOn(searchButton);
 	}
