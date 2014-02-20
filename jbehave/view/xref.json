@@ -1,5 +1,5 @@
 {"xref": {
-  "whenMade": 1392790112644,
+  "whenMade": 1392887969215,
   "createdBy": "JBehave",
   "metaFilter": "",
   "meta": [
@@ -14,8 +14,8 @@
       "meta": "",
       "scenarios": "Scenario:Verify the search function\u000aGiven I access Baidu site\u000aWhen I search text on Baidu\u000aThen I should see the search result\u000aWhen I nevigate a result link randomly\u000a\u000a\u000a",
       "passed": true,
-      "started": 1392790097788,
-      "duration": 14232
+      "started": 1392887950584,
+      "duration": 18003
     }
   ],
   "stepMatches": [

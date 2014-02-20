@@ -20,8 +20,8 @@ public class BaiduPage extends BasePage {
 	}
 
 	public void searchSpecificTextOnPage() {
-		WebElement searchField = helper.findElmenetBy(By.id("gs_htif0"));
-		WebElement searchButton = helper.findElmenetBy(By.id("gbqfba"));
+		WebElement searchField = helper.findElmenetBy(By.id("kw"));
+		WebElement searchButton = helper.findElmenetBy(By.id("su"));
 		helper.typeText("哈喽你好三中姐", searchField);
 		helper.clickOn(searchButton);
 	}
