@@ -17,17 +17,24 @@ public class BaiduPage extends BasePage {
 
 	public void nevigateToHomePage() {
 		helper.openURL("/");
+		try {
+			Thread.sleep(15000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void searchSpecificTextOnPage() {
 		WebElement searchField = helper.findElmenetBy(By.id("kw"));
 		WebElement searchButton = helper.findElmenetBy(By.id("su"));
-		helper.typeText("哈喽你好三中姐", searchField);
+		helper.typeText("三中姐", searchField);
 		helper.clickOn(searchButton);
 	}
 
 	public boolean isExpectedResultShowUp() {
-		return true;
+		WebElement searchField = helper.findElmenetBy(By.id("kw"));
+		// here we could define a final string as sanzhongjie .
+		return searchField.getAttribute("value").equals("三中姐");
 	}
 
 	public void reandomlyNevigateResultLink() {
