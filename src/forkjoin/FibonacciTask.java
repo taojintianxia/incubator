@@ -32,7 +32,6 @@ public class FibonacciTask extends RecursiveTask<Long> {
 			FibonacciTask worker2 = new FibonacciTask(new FibonacciProblem(problem.n - 2));
 			worker1.fork();
 			result = worker2.compute() + worker1.join();
-
 		}
 		return result;
 	}

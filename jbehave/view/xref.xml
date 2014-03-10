@@ -1,5 +1,5 @@
 <xref>
-  <whenMade>1392887969215</whenMade>
+  <whenMade>1392888186031</whenMade>
   <createdBy>JBehave</createdBy>
   <metaFilter></metaFilter>
   <meta/>
@@ -20,8 +20,8 @@ When I nevigate a result link randomly
 
 </scenarios>
       <passed>true</passed>
-      <started>1392887950584</started>
-      <duration>18003</duration>
+      <started>1392888157305</started>
+      <duration>28074</duration>
     </story>
   </stories>
   <stepMatches>
