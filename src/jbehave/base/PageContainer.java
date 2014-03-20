@@ -16,6 +16,7 @@ public class PageContainer {
 	private WebDriverHelper helper;
 	private BaiduPage baiduPage;
 
+	@SuppressWarnings("unused")
 	private PageContainer() {
 	}
 
