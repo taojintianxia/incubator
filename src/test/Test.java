@@ -1,15 +1,15 @@
 package test;
 
 public class Test {
-	public static void main(String... args) {
-		Test test = new Test();
-		TestBean bean = new TestBean();
-		bean.setAge(25);
-		bean.setName("AAA");
-		test.testReflection(bean);
+	public static void main(String... args) throws Exception {
+
+		Object str1 = new Object();
+		Object str2 = new Object();
+		Object str3 = new Object();
+
+		System.out.println(str1.hashCode() == str2.hashCode());
+		System.out.println(str1.hashCode() == str3.hashCode());
+
 	}
 
-	public void testReflection(TestBean bean) {
-		System.out.println("bean name is : " + bean.getName());
-	}
 }
