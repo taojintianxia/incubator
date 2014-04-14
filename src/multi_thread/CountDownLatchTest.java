@@ -17,6 +17,7 @@ public class CountDownLatchTest {
 
 		long start = System.nanoTime();
 		System.out.println("start Latch");
+		startGate.countDown();
 		for (int i = 0; i < nThreads; i++) {
 			Thread t = new Thread(new Runnable() {
 				public void run() {
@@ -35,7 +36,6 @@ public class CountDownLatchTest {
 			t.start();
 		}
 
-		startGate.countDown();
 		endGate.await();
 		long end = System.nanoTime();
 		System.out.println("Latch is end , it takes time : " + (end - start));
