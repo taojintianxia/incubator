@@ -1,5 +1,6 @@
 package test;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -26,6 +27,7 @@ public class HashTrieTree<Char extends Character> {
 	}
 
 	private Node addCharacter(char key) {
+		currentIndex.counterMap = new HashMap<>();
 		currentIndex.counterMap.put(key, 0);
 		currentIndex.next = new Node();
 		currentIndex = currentIndex.next;
