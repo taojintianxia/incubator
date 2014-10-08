@@ -16,6 +16,6 @@ public class JVMTest {
 		System.out.println("已分配内存 = " + total);
 		System.out.println("已分配内存中的剩余空间 = " + free);
 		System.out.println("最大可用内存 = " + usable);
-		
+
 	}
 }
