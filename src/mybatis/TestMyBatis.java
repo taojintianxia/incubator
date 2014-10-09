@@ -25,6 +25,7 @@ public class TestMyBatis {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		User user = sqlSession.selectOne(statement, 2);
 		System.out.println(user);
+		sqlSession.close();
 	}
 
 	@Test
@@ -35,6 +36,7 @@ public class TestMyBatis {
 		for (User user : userList) {
 			System.out.println(user);
 		}
+		sqlSession.close();
 	}
 
 	@Test
@@ -44,6 +46,7 @@ public class TestMyBatis {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		sqlSession.insert(statement, user);
 		sqlSession.commit();
+		sqlSession.close();
 	}
 
 	@Test
@@ -53,6 +56,7 @@ public class TestMyBatis {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		sqlSession.update(statement, user);
 		sqlSession.commit();
+		sqlSession.close();
 	}
 
 	public void testDelete() {
@@ -60,5 +64,6 @@ public class TestMyBatis {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		sqlSession.delete(statement, 1);
 		sqlSession.commit();
+		sqlSession.close();
 	}
 }
