@@ -1,6 +1,7 @@
 package mybatis;
 
 import java.io.IOException;
+import java.util.List;
 
 import mybatis.pojo.User;
 import mybatis.util.MyBatisUtil;
@@ -15,15 +16,25 @@ public class TestMyBatis {
 
 	public static void main(String... args) throws IOException {
 		TestMyBatis test = new TestMyBatis();
-		test.testSelect();
+		test.testGet();
 	}
 
 	@Test
-	public void testSelect() {
+	public void testGet() {
 		String statement = "mybatis.config.userMapper.getUser";
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		User user = sqlSession.selectOne(statement, 2);
 		System.out.println(user);
+	}
+
+	@Test
+	public void testGetAll() {
+		String statement = "mybatis.config.userMapper.getAllUsers";
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<User> userList = sqlSession.selectList(statement);
+		for (User user : userList) {
+			System.out.println(user);
+		}
 	}
 
 	@Test

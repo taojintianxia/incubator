@@ -22,7 +22,7 @@
 		update users set name=#{name} , age=#{age} where id=#{id}
 	</update>
 	
-	<select id="getAllUsers">
+	<select id="getAllUsers" resultType="mybatis.pojo.User">
 		select * from users
 	</select>
 	
