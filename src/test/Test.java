@@ -1,80 +1,71 @@
 package test;
 
 public class Test {
-	/*
-	 * 	1	2	3
-		6	5	4
-		7	8	9
-	
-		打印出
-		3 2 4 1 5 9 6 8 7
-	
-		1	2	3	4
-		8	7	6	5
-		9	10	11	12
-		16	15	14	13
-	
-		打印出
-		4 3 5 2 6 12 1 7 11 13 8 10 14 9 15 16
-
-	 */
 	public static void main(String... args) {
-		int[][] matrix = getMatrix(4);
-		printMatrix(matrix);
-		printMatrixAsGluttonousSnake(matrix);
+		String num1 = "158745651616161658161651561666561";
+		String num2 = "858745464654646546464654646466546";
+
+		System.out.println(addBigNum(num1, num2));
 	}
 
-	public static int[][] getMatrix(int level) {
-		if (level < 3) {
-			System.out.println("WTF");
-			throw new IllegalArgumentException("NIMEI");
+	public static String addBigNum(String num1, String num2) {
+		String finalNum = "";
+		boolean isOverTen = false;
+		int maxLength = num1.length() > num2.length() ? num1.length() : num2.length();
+
+		int tmpSum = 0;
+		char[] numArray1 = num1.toCharArray();
+		char[] numArray2 = num2.toCharArray();
+
+		if (num1.length() > num2.length()) {
+			numArray2 = fillTheCharWithZero(num2.toCharArray(), num1.length());
+		} else {
+			numArray1 = fillTheCharWithZero(num1.toCharArray(), num2.length());
 		}
 
-		int[][] matrix = new int[level][level];
-		int count = 1;
+		for (int i = maxLength - 1; i >= 0; i--) {
+			tmpSum = Integer.parseInt(numArray1[i] + "") + Integer.parseInt(numArray2[i] + "");
+			if (isOverTen) {
+				++tmpSum;
+			}
 
-		for (int i = 0; i < level; i++) {
-			if (i % 2 == 0) {
-				for (int j = 0; j < level; j++) {
-					matrix[i][j] = count;
-					count++;
-				}
+			if (tmpSum > 9) {
+				finalNum += String.valueOf(tmpSum).toCharArray()[1];
+				isOverTen = true;
 			} else {
-				for (int j = level - 1; j > -1; j--) {
-					matrix[i][j] = count;
-					count++;
-				}
+				finalNum += tmpSum;
+				isOverTen = false;
 			}
 		}
 
-		return matrix;
+		if (isOverTen) {
+			finalNum += "1";
+		}
+
+		return revertTheString(finalNum);
 	}
 
-	public static void printMatrix(int[][] matrix) {
-		int level = matrix[0].length;
-		for (int i = 0; i < level; i++) {
-			for (int j = 0; j < level; j++) {
-				System.out.print(matrix[i][j] + "	");
+	private static char[] fillTheCharWithZero(char[] targetChar, int length) {
+		int targetLength = targetChar.length;
+		if (targetLength >= length) {
+			return targetChar;
+		} else {
+			char[] zeroChar = new char[length - targetLength];
+			for (int i = 0; i < zeroChar.length; i++) {
+				zeroChar[i] = '0';
 			}
-			System.out.println();
+			return (String.valueOf(zeroChar) + String.valueOf(targetChar)).toCharArray();
 		}
 	}
 
-	public static void printMatrixAsGluttonousSnake(int[][] matrix) {
-		int level = matrix[0].length;
-		for (int i = level - 1; i >= 0; i--) {
-			for (int j = 0, plus = 0; j < level - i; j++) {
-				System.out.print(matrix[j][i - j + plus] + " - ");
-				plus += 2;
-			}
+	private static String revertTheString(String str) {
+		char[] targetChar = str.toCharArray();
+		String finalString = "";
+		for (int i = targetChar.length - 1; i >= 0; i--) {
+			finalString += String.valueOf(targetChar[i]);
 		}
 
-		for (int i = 1; i <= level - 1; i++) {
-			for (int j = 0, plus = 0; j < level - i; j++) {
-				System.out.print(matrix[i + plus][j] + " - ");
-				plus += 1;
-			}
-		}
+		return finalString;
 	}
 
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.config.userMapper">
+	<!-- 这里namespace必须是UserMapper接口的路径，不然要运行的时候要报错 “is not known to the MapperRegistry” -->
+
+	<!-- 这里的id必须和UserMapper接口中的接口方法名相同，不然运行的时候也要报错 -->
+	<select id="getUser" resultType="mybatis.pojo.User" parameterType="int" >
+		select * from users where id=#{id}
+	</select>
+	
+	<insert id="addUser" parameterType="mybatis.pojo.User">
+		insert into users(name , age) values(#{name},#{age})
+	</insert>
+	
+	<delete id="deleteUser" parameterType="int">
+		delete from users where id=#{id}
+	</delete>
+	
+	<update id="updateUser" parameterType="mybatis.pojo.User">
+		update users set name=#{name} , age=#{age} where id=#{id}
+	</update>
+	
+	<select id="getAllUsers">
+		select * from users
+	</select>
+	
+</mapper>
