@@ -1,68 +1,50 @@
 package test;
 
-import java.util.concurrent.CountDownLatch;
-
 public class Test {
 
-	public static void main(String... args) {
+	public static void main(String... args) throws Exception {
 		Test test = new Test();
-		System.out.println(test.executeB());
-	}
-
-	public int executeA() {
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		return 50;
-	}
-
-	public int executeB() {
-		CountDownLatch latch = new CountDownLatch(2);
-		int tmp = 10;
-		final flagClass flass = new flagClass();
-
+		Test test2 = new Test();
 		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				flass.setFlag(executeA());
-				latch.countDown();
-				latch.countDown();
-			}
-		}).start();
 
-		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try {
-					Thread.sleep(6000);
-					latch.countDown();
-					latch.countDown();
-				} catch (InterruptedException e) {
+					test.methodA();
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
+
 		}).start();
 
-		try {
-			latch.await();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					test.methodB();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+		}).start();
+
+	}
+
+	public synchronized void methodA() throws Exception {
+		for (int i = 0; i < 10; i++) {
+			System.out.println("A is calling");
+			Thread.sleep(200);
 		}
-
-		return flass.getFlag();
-	}
-}
-
-class flagClass {
-	private volatile int flag = 0;
-
-	public int getFlag() {
-		return flag;
 	}
 
-	public void setFlag(int flag) {
-		this.flag = flag;
+	public synchronized void methodB() throws Exception {
+		for (int i = 0; i < 10; i++) {
+			System.out.println("B is calling");
+			Thread.sleep(200);
+		}
 	}
+
 }
