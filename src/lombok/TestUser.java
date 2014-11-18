@@ -12,6 +12,7 @@ public class TestUser {
 		user.setAge(11);
 		user.setPassword("123123");
 		user.setUsername("test");
+		System.out.println(user);
 	}
 
 }
