@@ -12,6 +12,9 @@ public class JacksonTest {
 
 	@Test
 	public void testJavaPOJOToJson() {
+
+		UserGroup userGroup = new UserGroup();
+
 		User user1 = new User();
 		user1.setAge(11);
 		user1.setName("AA");
@@ -26,12 +29,17 @@ public class JacksonTest {
 		targetList.add(user1);
 		targetList.add(user2);
 
+		userGroup.setId("123456");
+		userGroup.setPage("10");
+		userGroup.setStatus("OK");
+		userGroup.setUsers(targetList);
+
 		System.out.println(targetList);
 
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			mapper.writeValue(new File("/Users/kane/Downloads/test.json"),
-					targetList);
+					userGroup);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
