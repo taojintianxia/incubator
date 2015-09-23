@@ -1,32 +1,14 @@
 package test;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class JavaTest {
+	// 定义logger
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+
 	public static void main(String... args) {
-
-		final JavaTest testclass = new JavaTest();
-
-		for (int i = 0; i < 50; i++) {
-			new Thread(new Runnable() {
-
-				@Override
-				public void run() {
-					testclass.test();
-				}
-
-			}).start();
-		}
-	}
-
-	public void test() {
-		// 这个方法就是你要调用的
-		for (int i = 0; i < 5; i++) {
-			System.out.println("testing " + Thread.currentThread().getName());
-		}
-
-		try {
-			Thread.sleep(50);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		JavaTest test = new JavaTest();
+		test.logger.info("just a test");
 	}
 }
