@@ -9,6 +9,7 @@ public class JavaTest {
 
 	public static void main(String... args) {
 		JavaTest test = new JavaTest();
-		test.logger.info("just a test");
+		test.logger.info("just a info test");
+		test.logger.error("just a error test");
 	}
 }
