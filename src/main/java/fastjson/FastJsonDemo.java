@@ -13,7 +13,6 @@ public class FastJsonDemo {
 	
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
-	
 //	public static final Object parse(String text); // 把JSON文本parse为JSONObject或者JSONArray 
 //	public static final JSONObject parseObject(String text)； // 把JSON文本parse成JSONObject    
 //	public static final  T parseObject(String text, Class clazz); // 把JSON文本parse为JavaBean 
