@@ -1,8 +1,12 @@
 *.class
+.DS_Store
 
 # Package Files #
 *.war
 *.ear
+.project
+.classpath
+.settings/
 /bin
 /target/
 /nbproject/private/
