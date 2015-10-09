@@ -23,6 +23,7 @@ public class HTTPClientDemo {
 	
 	private static String URL = "http://api.money.126.net/data/feed/1000002,money.api";
 
+	// 测试模拟http get方法
 	@Test
 	public void testGetMethod() throws ClientProtocolException, IOException {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
@@ -50,6 +51,7 @@ public class HTTPClientDemo {
 		}
 	}
 	
+	// 测试模拟http post方法
 	@Test
 	public void testPost() throws ClientProtocolException, IOException{
 		CloseableHttpClient httpclient = HttpClients.createDefault();
@@ -71,13 +73,14 @@ public class HTTPClientDemo {
 		}
 	}
 	
+	// 更便捷的API
 	@Test
 	public void testSimpleAPI() throws ClientProtocolException, IOException {
 		// The fluent API relieves the user from having to deal with manual deallocation of system
 		// resources at the cost of having to buffer response content in memory in some cases.
 
-		Request.Get("http://targethost/homepage").execute().returnContent();
-		Request.Post("http://targethost/login")
+		System.out.println(Request.Get(URL).execute().returnContent());
+		Request.Post(URL)
 				.bodyForm(Form.form().add("username", "vip").add("password", "secret").build()).execute()
 				.returnContent();
 	}
