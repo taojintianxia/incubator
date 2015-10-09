@@ -52,6 +52,7 @@ public class MaxiumSubSum {
 				continue;
 			}
 		}
+		
 		System.out.println();
 		System.out.println("------------------------------------------------");
 		System.out.println(tmpTotal);
