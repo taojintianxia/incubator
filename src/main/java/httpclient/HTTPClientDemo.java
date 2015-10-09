@@ -1,6 +1,7 @@
 package httpclient;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +20,11 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+
 public class HTTPClientDemo {
 	
-	private static String URL = "http://api.money.126.net/data/feed/1000002,money.api";
+	private static String URL = "http://api.money.126.net/data/feed/1000002,1000001,money.api";
 
 	// 测试模拟http get方法
 	@Test
@@ -83,6 +86,21 @@ public class HTTPClientDemo {
 		Request.Post(URL)
 				.bodyForm(Form.form().add("username", "vip").add("password", "secret").build()).execute()
 				.returnContent();
+	}
+	
+	@Test
+	public void testTransfertToJson() throws ClientProtocolException, IOException{
+		Charset charset = Charset.forName("UTF-8");
+		String originalJsonContent = Request.Get(URL).execute().returnContent().asString(charset);
+		String stockContent = originalJsonContent.substring(21, originalJsonContent.length()-2);
+		System.out.println(stockContent);
+		NetEaseStock netEaseStock = JSON.parseObject(stockContent, NetEaseStock.class);
+		System.out.println(netEaseStock.getStockId());
+	}
+	
+	@Test
+	public void testVoid(){
+		System.out.println("_ntes_quote_callback(".length());
 	}
 
 }

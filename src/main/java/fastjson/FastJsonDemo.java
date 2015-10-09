@@ -1,17 +1,17 @@
 package fastjson;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 
+import lombok.extern.slf4j.Slf4j;
 import model.User;
 
-
+@Slf4j
 public class FastJsonDemo {
-	
-	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 //	public static final Object parse(String text); // 把JSON文本parse为JSONObject或者JSONArray 
 //	public static final JSONObject parseObject(String text)； // 把JSON文本parse成JSONObject    
@@ -29,7 +29,21 @@ public class FastJsonDemo {
 		user.setPassword("abc");
 		user.setUsername("kkk");
 		
-		logger.info(JSON.toJSONString(user));
+		Map<String, User> userMap = new HashMap<>();
+		userMap.put("kkk", user);
+		
+		log.info(JSON.toJSONString(userMap));
+	}
+	
+	@Test
+	public void parseWithSpecificClazz() {
+		String jsonStr = "{\"kkk\":{\"age\":11,\"password\":\"abc\",\"username\":\"kkk\"}}";
+		Map<String, User> userMap = new HashMap<>();
+		userMap = JSON.parseObject(jsonStr, userMap.getClass());
+		for (Object o : userMap.entrySet()) {
+			Map.Entry<String, User> entry = (Map.Entry<String, User>) o;
+			System.out.println(entry.getKey() + " : " + entry.getValue());
+		}
 	}
 
 }
