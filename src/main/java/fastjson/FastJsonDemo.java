@@ -38,11 +38,11 @@ public class FastJsonDemo {
 	@Test
 	public void parseWithSpecificClazz() {
 		String jsonStr = "{\"kkk\":{\"age\":11,\"password\":\"abc\",\"username\":\"kkk\"}}";
-		Map<String, User> userMap = new HashMap<>();
+		Map<String, String> userMap = new HashMap<>();
 		userMap = JSON.parseObject(jsonStr, userMap.getClass());
 		for (Object o : userMap.entrySet()) {
-			Map.Entry<String, User> entry = (Map.Entry<String, User>) o;
-			System.out.println(entry.getKey() + " : " + entry.getValue());
+			Map.Entry<String, Object> entry = (Map.Entry<String, Object>) o;
+			System.out.println(entry.getKey() + " : " + JSON.parseObject(entry.getValue().toString(),User.class).getUsername());
 		}
 	}
 

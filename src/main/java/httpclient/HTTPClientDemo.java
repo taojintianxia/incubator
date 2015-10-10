@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
@@ -94,8 +96,13 @@ public class HTTPClientDemo {
 		String originalJsonContent = Request.Get(URL).execute().returnContent().asString(charset);
 		String stockContent = originalJsonContent.substring(21, originalJsonContent.length()-2);
 		System.out.println(stockContent);
-		NetEaseStock netEaseStock = JSON.parseObject(stockContent, NetEaseStock.class);
-		System.out.println(netEaseStock.getStockId());
+		Map<String , NetEaseStock> stockMap = new ConcurrentHashMap<>();
+		for(Object stock : JSON.parseObject(stockContent).entrySet()){
+			Map.Entry<String, Object> entry = (Map.Entry<String, Object>) stock;
+			stockMap.put(entry.getKey(), JSON.parseObject(entry.getValue().toString(),NetEaseStock.class));
+		}
+		
+		System.out.println(stockMap.toString());
 	}
 	
 	@Test
