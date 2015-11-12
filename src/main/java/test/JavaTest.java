@@ -1,15 +1,26 @@
 package test;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class JavaTest {
-	// 定义logger
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+	public static String sql = "ALTER TABLE money_record_# CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ;";
 
+	public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy_MM");
 	public static void main(String... args) {
-		JavaTest test = new JavaTest();
-		test.logger.info("just a info test");
-		test.logger.error("just a error test");
+		Calendar startTime = Calendar.getInstance();
+		Calendar endTime = Calendar.getInstance();
+
+		startTime.set(Calendar.YEAR, 2013);
+		startTime.set(Calendar.MONTH, 0);
+
+		endTime.set(Calendar.YEAR, 2017);
+		endTime.set(Calendar.MONTH, 12);
+		
+		while (startTime.before(endTime)) {
+			System.out.println(sql.replace("#", simpleDateFormat.format(startTime.getTime())));
+			startTime.add(Calendar.MONTH, 1);
+		}
+		
 	}
 }

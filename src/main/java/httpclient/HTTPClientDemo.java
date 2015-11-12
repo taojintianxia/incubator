@@ -26,7 +26,7 @@ import com.alibaba.fastjson.JSON;
 
 public class HTTPClientDemo {
 	
-	private static String URL = "http://api.money.126.net/data/feed/1000002,1000001,money.api";
+	private static String URL = "http://api.money.126.net/data/feed/1000002,money.api";
 
 	// 测试模拟http get方法
 	@Test
@@ -85,8 +85,7 @@ public class HTTPClientDemo {
 		// resources at the cost of having to buffer response content in memory in some cases.
 
 		System.out.println(Request.Get(URL).execute().returnContent());
-		Request.Post(URL)
-				.bodyForm(Form.form().add("username", "vip").add("password", "secret").build()).execute()
+		Request.Post(URL).bodyForm(Form.form().add("username", "vip").add("password", "secret").build()).execute()
 				.returnContent();
 	}
 	
