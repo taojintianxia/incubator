@@ -13,8 +13,8 @@ import lombok.Data;
  * @author kane
  *
  */
-@Data
 
+@Data
 public class TransactionUser {
 
 	long userId;
