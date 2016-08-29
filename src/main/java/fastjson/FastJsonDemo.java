@@ -43,17 +43,16 @@ public class FastJsonDemo {
         log.info(JSON.toJSONString(userMap));
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void parseWithSpecificClazz() {
-        String jsonStr =
-            "{\"kkk\":{\"age\":11,\"password\":\"abc\",\"username\":\"kkk\"}}";
+        String jsonStr = "{\"kkk\":{\"age\":11,\"password\":\"abc\",\"username\":\"kkk\"}}";
         Map<String, String> userMap = new HashMap<>();
         userMap = JSON.parseObject(jsonStr, userMap.getClass());
         for (Object o : userMap.entrySet()) {
             Map.Entry<String, Object> entry = (Map.Entry<String, Object>) o;
             System.out.println(entry.getKey() + " : "
-                + JSON.parseObject(entry.getValue().toString(), User.class)
-                    .getUsername());
+                + JSON.parseObject(entry.getValue().toString(), User.class).getUsername());
         }
     }
 

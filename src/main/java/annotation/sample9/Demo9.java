@@ -17,9 +17,22 @@ public class Demo9 {
         }
 
         for (Method method : methods) {
-            Annotation annotation = method.getAnnotation(MethodLevelAnnotation2.class);
-            if (annotation != null)
+            System.out.println("method is : " + method.getName());
+            Annotation[] annotaions = method.getAnnotations();
+            for (Annotation anno : annotaions) {
+                System.out.println(anno);
+            }
+            MethodLevelAnnotation2 annotation = method.getAnnotation(MethodLevelAnnotation2.class);
+            MethodLevelAnnotation annotationzz = method.getAnnotation(MethodLevelAnnotation.class);
+
+            System.out.println(annotationzz);
+            if (annotation != null) {
                 System.out.println(annotation.toString());
+                Method[] methods2 = annotation.getClass().getDeclaredMethods();
+                for (Method methodx : methods2) {
+                    System.out.println(methodx.getName());
+                }
+            }
         }
 
     }
