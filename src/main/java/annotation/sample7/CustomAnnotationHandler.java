@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContextAware;
 
 import annotation.sample7.util.AnnotationUtil;
 
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class CustomAnnotationHandler implements ApplicationContextAware, InitializingBean {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
