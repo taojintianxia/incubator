@@ -69,7 +69,6 @@ public class JavaTest {
             if (Pattern.matches(REGEX, charArray[i] + "")) {
                 int number = Integer.parseInt(charArray[i] + "");
                 if (number > maxNumMap.get(i)) {
-                    maxNumMap.remove(i);
                     maxNumMap.put(i, number);
                 }
             }
