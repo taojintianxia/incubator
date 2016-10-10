@@ -1,71 +1,78 @@
 package test;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.alibaba.fastjson.JSON;
-
-@SuppressWarnings("resource")
+import java.util.Map;
+import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 public class JavaTest {
 
-	private static Logger logger = LoggerFactory.getLogger(JavaTest.class);
-	private static Random random = new Random();
-	private static long USER_NUM = 10000000;
-	private static File file = new File("/Users/kane/Desktop/trans.txt");
+    private static Logger logger = Logger.getLogger(JavaTest.class.getSimpleName());
+    private static final Integer TOTAL_COUNT = 3;
 
-	public static void main(String... args) throws IOException {
-		JavaTest javaTest = new JavaTest();
-		javaTest.writeFile(file);
-		javaTest.readFile(file);
-		String json = "{\"amount\":442,\"apiUser\":646,\"transType\":171,\"userId\":1500272185267068690}";
-		TransactionUser user = JSON.parseObject(json, TransactionUser.class);
-		logger.info(user.toString());
-	}
+    // 匹配1-9的数字
+    private static final String REGEX = "[1-9]+";
 
-	public void writeFile(File file) throws IOException {
-		TransactionUser user = new TransactionUser();
-		FileWriter fileWriter = new FileWriter(file);
-		long timeStart = System.currentTimeMillis();
+    public static void main(String... args) {
 
-		for (int i = 0; i < USER_NUM; i++) {
-			user.setUserId(Math.abs(random.nextLong()) + 1);
-			user.setApiUser(random.nextInt(1000) + 1);
-			user.setAmount(new BigDecimal(random.nextInt(1000) + 1));
-			user.setTransType((short) (random.nextInt(255) + 1));
-			fileWriter.write(JSON.toJSONString(user) + "\n");
-		}
+        List<String> testList = Arrays.asList("00001", "201", "zj", "22", "90");
+        JavaTest.getTotalNumberSum(testList);
+    }
 
-		fileWriter.flush();
+    public static Integer getTotalNumberSum(List<String> targetStrList) {
+        int result = 0;
+        if (targetStrList == null || targetStrList.isEmpty()) {
+            return result;
+        }
 
-		System.out.println("共用时" + (System.currentTimeMillis() - timeStart) / 1000 + "秒");
-	}
+        // 每一位最大的数都保存在一个map里, key为位数, value为最大值
+        Map<Integer, Integer> countMap = new HashMap<>();
 
-	public void readFile(File file) throws IOException {
-		FileReader fileReader = new FileReader(file);
-		long timeStart = System.currentTimeMillis();
-		List<TransactionUser> userList = new ArrayList<>();
+        for (int i = 0; i < TOTAL_COUNT; i++) {
+            countMap.put(i, 0);
+        }
 
-		BufferedReader bufferedReader = new BufferedReader(fileReader);
-		String line = bufferedReader.readLine();
-		System.out.println("line is : " + line);
-		while (line != null) {
-			TransactionUser user = JSON.parseObject(line.trim(), TransactionUser.class);
-			userList.add(user);
-			line = bufferedReader.readLine();
-		}
-		logger.info(userList.get(0).toString());
-		logger.info("共用时" + (System.currentTimeMillis() - timeStart) / 1000 + "秒");
-	}
+        for (String targetStr : targetStrList) {
+            String transferStr = targetStr;
+            if (targetStr == null) {
+                logger.info("目标字符串为空,跳过");
+                continue;
+                // 超过三位就切割成为三位
+            } else if (targetStr.length() > 3) {
+                transferStr = targetStr.substring(targetStr.length() - 3, targetStr.length());
+            } else {
+                // 不足三位就补齐
+                while (transferStr.length() < 3) {
+                    transferStr = 0 + transferStr;
+                }
+            }
 
+            getMaxmiumNum(transferStr, countMap);
+        }
+
+        logger.info("最大的三位如下");
+        for (int i = 0; i < countMap.size(); i++) {
+            logger.info("第" + i + "位最大值为 : " + countMap.get(i));
+            result += countMap.get(i);
+        }
+        logger.info("最终结果为 : " + result);
+
+        return result;
+    }
+
+    private static void getMaxmiumNum(String targetStr, Map<Integer, Integer> maxNumMap) {
+        char[] charArray = targetStr.toCharArray();
+        for (int i = 0; i < targetStr.length(); i++) {
+            // 用来判断是数字还是字符串
+            if (Pattern.matches(REGEX, charArray[i] + "")) {
+                int number = Integer.parseInt(charArray[i] + "");
+                if (number > maxNumMap.get(i)) {
+                    maxNumMap.remove(i);
+                    maxNumMap.put(i, number);
+                }
+            }
+        }
+    }
 }
