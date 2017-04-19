@@ -1,77 +1,37 @@
 package test;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Logger;
-import java.util.regex.Pattern;
+import java.util.Random;
+
+import com.google.common.base.Optional;
 
 public class JavaTest {
 
-    private static Logger logger = Logger.getLogger(JavaTest.class.getSimpleName());
-    private static final Integer TOTAL_COUNT = 3;
-
-    // 匹配1-9的数字
-    private static final String REGEX = "[1-9]+";
+    // public static void main(String... args) throws IOException {
+    // String grpc_plugin =
+    // "/Users/nianjun/Work/tools/grpc-java/compiler/build/exe/java_plugin/protoc-gen-grpc-java";
+    // String[] cmds =
+    // new String[] {"sh", "-c", "cd /Users/nianjun/Work/workspace/idl-transformer/idl/1487233348006
+    // ; "
+    // + "export PATH=$PATH:/usr/local/bin/ ; echo $PATH ; sh
+    // /Users/nianjun/Work/tools/grpc-java/compiler/compiler.sh ./helloworld.proto"};
+    //
+    // File file = new File("/Users/nianjun/Work/tools/grpc-java/compiler/compiler.sh");
+    // Process process = Runtime.getRuntime().exec(cmds);
+    // BufferedReader input = new BufferedReader(new InputStreamReader(process.getInputStream()));
+    // String line = "";
+    // while ((line = input.readLine()) != null) {
+    // System.out.println(line);
+    // }
+    // }
 
     public static void main(String... args) {
+        String nullableMaybe = null;
+        if (new Random().nextBoolean()) {
+            nullableMaybe = "xiba";
+        }
+        String string = Optional.fromNullable(nullableMaybe).or("默认值");
 
-        List<String> testList = Arrays.asList("00001", "201", "zj", "22", "90");
-        JavaTest.getTotalNumberSum(testList);
+        System.out.println(string);
     }
 
-    public static Integer getTotalNumberSum(List<String> targetStrList) {
-        int result = 0;
-        if (targetStrList == null || targetStrList.isEmpty()) {
-            return result;
-        }
-
-        // 每一位最大的数都保存在一个map里, key为位数, value为最大值
-        Map<Integer, Integer> countMap = new HashMap<>();
-
-        for (int i = 0; i < TOTAL_COUNT; i++) {
-            countMap.put(i, 0);
-        }
-
-        for (String targetStr : targetStrList) {
-            String transferStr = targetStr;
-            if (targetStr == null) {
-                logger.info("目标字符串为空,跳过");
-                continue;
-                // 超过三位就切割成为三位
-            } else if (targetStr.length() > 3) {
-                transferStr = targetStr.substring(targetStr.length() - 3, targetStr.length());
-            } else {
-                // 不足三位就补齐
-                while (transferStr.length() < 3) {
-                    transferStr = 0 + transferStr;
-                }
-            }
-
-            getMaxmiumNum(transferStr, countMap);
-        }
-
-        logger.info("最大的三位如下");
-        for (int i = 0; i < countMap.size(); i++) {
-            logger.info("第" + i + "位最大值为 : " + countMap.get(i));
-            result += countMap.get(i);
-        }
-        logger.info("最终结果为 : " + result);
-
-        return result;
-    }
-
-    private static void getMaxmiumNum(String targetStr, Map<Integer, Integer> maxNumMap) {
-        char[] charArray = targetStr.toCharArray();
-        for (int i = 0; i < targetStr.length(); i++) {
-            // 用来判断是数字还是字符串
-            if (Pattern.matches(REGEX, charArray[i] + "")) {
-                int number = Integer.parseInt(charArray[i] + "");
-                if (number > maxNumMap.get(i)) {
-                    maxNumMap.put(i, number);
-                }
-            }
-        }
-    }
 }
