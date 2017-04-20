@@ -1,17 +1,17 @@
 package com.github.taojintianxia.incubator.springboot;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@EnableConfigurationProperties
+@ConfigurationProperties
 @Component
-@ConfigurationProperties(prefix = "maven")
+@Data
 public class MavenProperties {
 
-    private String home;
+    private String name;
 
 }
