@@ -1,31 +1,25 @@
 package com.github.taojintianxia.incubator.test;
 
-import java.util.Random;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import org.apache.maven.model.Model;
+import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
 public class JavaTest {
 
-    public static void main(String[] args) {
-        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(5);
+    public static void main(String[] args) throws FileNotFoundException, IOException, XmlPullParserException {
 
-        for (int i = 0; i < 30; i++) {
-            scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
-                @Override
-                public void run() {
-                    long start = System.currentTimeMillis();
-                    try {
-                        Thread.sleep((new Random().nextInt(5) + 1) * 1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println(Thread.currentThread().getName() + " - Executed!");
-                    System.out.println("it takes " + (System.currentTimeMillis() - start) / 1000 + " seconds");
-                }
-            }, 0, 1, TimeUnit.SECONDS);
-        }
+        MavenXpp3Reader reader = new MavenXpp3Reader();
+        String myPom = "pom.xml";
+        Model model = reader.read(new FileReader(myPom));
+
+        System.out.println("artifactId is : " + model.getArtifactId());
+        System.out.println("groupId is : " + model.getGroupId());
+        System.out.println("version is : " + model.getVersion());
+
+
     }
-
-
 }
