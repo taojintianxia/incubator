@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.3.RELEASE</version>
+		<version>1.5.4.RELEASE</version>
 		<!-- lookup parent from repository -->
 		<relativePath />
 	</parent>
@@ -17,6 +17,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+		<hibernate.validator.version>5.4.1.Final</hibernate.validator.version>
+		<snowflake.version>0.2.0</snowflake.version>
 	</properties>
 
 	<dependencies>
@@ -180,6 +182,25 @@
 			<groupId>ch.ethz.ganymed</groupId>
 			<artifactId>ganymed-ssh2</artifactId>
 			<version>build210</version>
+		</dependency>
+
+		<!-- hibernate validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+
+		<!-- Unified EL reference implementation -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+		</dependency>
+
+		<!-- Hibernate Validator CDI portable extension -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator-cdi</artifactId>
+			<version>${hibernate.validator.version}</version>
 		</dependency>
 
 	</dependencies>
