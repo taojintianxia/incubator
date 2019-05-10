@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <springboot.version>1.5.20.RELEASE</springboot.version>
-        <netty-all.version>4.1.36.Final</netty-all.version>
+        <netty.version>4.1.36.Final</netty.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <hibernate.validator.version>5.4.1.Final</hibernate.validator.version>
         <guava.version>27.1-jre</guava.version>
@@ -35,7 +35,6 @@
 
     <dependencyManagement>
         <dependencies>
-
             <!-- spring boot starter -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -56,7 +55,7 @@
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
-                <version>${netty-all.version}</version>
+                <version>${netty.version}</version>
             </dependency>
 
             <!-- apache maven model -->
