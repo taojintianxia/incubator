@@ -1,10 +1,16 @@
 # maven ignore
 target/
+*.class
 *.jar
 *.war
 *.zip
 *.tar
 *.tar.gz
+
+# maven plugin ignore
+release.properties
+cobertura.ser
+*.gpg
 
 # eclipse ignore
 .settings/
@@ -18,7 +24,9 @@ target/
 *.iws
 
 # temp ignore
+logs/
 *.log
+*.doc
 *.cache
 *.diff
 *.patch
