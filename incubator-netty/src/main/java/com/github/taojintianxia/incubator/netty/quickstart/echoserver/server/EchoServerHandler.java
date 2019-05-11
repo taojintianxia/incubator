@@ -1,4 +1,4 @@
-package com.github.taojintianxia.incubator.netty.quickstart.echoserver;
+package com.github.taojintianxia.incubator.netty.quickstart.echoserver.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
