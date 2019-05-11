@@ -1,4 +1,4 @@
-package com.github.taojintianxia.incubator.netty.quickstart.timerserver;
+package com.github.taojintianxia.incubator.netty.quickstart.timerserver.server;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFuture;

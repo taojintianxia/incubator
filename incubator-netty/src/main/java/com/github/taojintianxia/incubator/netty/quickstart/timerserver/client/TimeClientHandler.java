@@ -1,4 +1,4 @@
-package com.github.taojintianxia.incubator.netty.quickstart.echoserver.client;
+package com.github.taojintianxia.incubator.netty.quickstart.timerserver.client;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

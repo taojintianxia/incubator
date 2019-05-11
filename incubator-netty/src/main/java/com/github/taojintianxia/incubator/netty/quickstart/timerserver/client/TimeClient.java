@@ -1,4 +1,4 @@
-package com.github.taojintianxia.incubator.netty.quickstart.echoserver.client;
+package com.github.taojintianxia.incubator.netty.quickstart.timerserver.client;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -9,14 +9,11 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
-/**
- * @author Nianjun Sun
- * @date 2019-05-11 13:21
- */
+
 public class TimeClient {
     public static void main(String[] args) throws Exception {
-        String host = args[0];
-        int port = Integer.parseInt(args[1]);
+        String host = "localhost";
+        int port = 8080;
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {

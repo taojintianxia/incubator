@@ -1,4 +1,4 @@
-package com.github.taojintianxia.incubator.netty.quickstart.timerserver;
+package com.github.taojintianxia.incubator.netty.quickstart.timerserver.server;
 
 import com.github.taojintianxia.incubator.netty.quickstart.discard.DiscardServer;
 import io.netty.bootstrap.ServerBootstrap;
