@@ -6,6 +6,9 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * @author Nianjun Sun
  * @date 2019-05-21 10:08
@@ -19,7 +22,8 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
-        System.out.println("Client received:" + msg.toString(CharsetUtil.UTF_8));
+        System.out.println("Client received:" + msg.toString(CharsetUtil.UTF_8) + ", " + new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss.SSS").format(new Date()));
     }
 
     @Override
