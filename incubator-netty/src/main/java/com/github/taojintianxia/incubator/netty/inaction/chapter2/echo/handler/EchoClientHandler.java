@@ -1,4 +1,4 @@
-package com.github.taojintianxia.incubator.netty.inaction.chapter2.echo;
+package com.github.taojintianxia.incubator.netty.inaction.chapter2.echo.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

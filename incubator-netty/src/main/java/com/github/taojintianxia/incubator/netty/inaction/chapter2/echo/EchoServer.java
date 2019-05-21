@@ -1,5 +1,6 @@
 package com.github.taojintianxia.incubator.netty.inaction.chapter2.echo;
 
+import com.github.taojintianxia.incubator.netty.inaction.chapter2.echo.handler.EchoServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
