@@ -22,7 +22,7 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
-        System.out.println("Client received:" + msg.toString(CharsetUtil.UTF_8) + ", " + new SimpleDateFormat(
+        System.out.println("Client received:" + msg.toString(CharsetUtil.UTF_8) + " " + new SimpleDateFormat(
                 "yyyy-MM-dd HH:mm:ss.SSS").format(new Date()));
     }
 

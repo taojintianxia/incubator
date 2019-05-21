@@ -19,7 +19,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext channelHandlerContext, Object msg) {
         ByteBuf in = (ByteBuf) msg;
-        System.out.println("Server received : " + in.toString(CharsetUtil.UTF_8) + ", " + new SimpleDateFormat(
+        System.out.println("Server received : " + in.toString(CharsetUtil.UTF_8) + " " + new SimpleDateFormat(
                 "yyyy-MM-dd HH:mm:ss.SSS").format(new Date()));
         channelHandlerContext.write(in);
     }
