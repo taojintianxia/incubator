@@ -17,18 +17,11 @@ import java.net.InetSocketAddress;
  */
 public class EchoServer {
 
-    private final int port;
-
-    public EchoServer(int port) {
-        this.port = port;
-    }
+    private static final int port = 9988;
 
     public static void main(String... args) throws Exception {
-        if (args.length != 1) {
-            System.out.println("Usage : " + EchoServer.class.getSimpleName() + " <port> ");
-            int port = Integer.parseInt("9988");
-            new EchoServer(port).start();
-        }
+        System.out.println("Running " + EchoServer.class.getSimpleName() + " , Port: " + port);
+        new EchoServer().start();
     }
 
     public void start() throws Exception {
