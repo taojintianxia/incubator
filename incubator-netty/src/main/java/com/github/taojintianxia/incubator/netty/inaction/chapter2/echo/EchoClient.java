@@ -17,14 +17,10 @@ import java.net.InetSocketAddress;
  */
 public class EchoClient {
 
-    private final String host;
+    private static final String host = "localhost";
 
-    private final int port;
+    private static final int port = 9988;
 
-    public EchoClient(String host, int port) {
-        this.host = host;
-        this.port = port;
-    }
 
     public void start() throws Exception {
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
@@ -45,6 +41,7 @@ public class EchoClient {
     }
 
     public static void main(String... args) throws Exception {
-        new EchoClient("localhost", 9990).start();
+        System.out.println("start echo client");
+        new EchoClient().start();
     }
 }
