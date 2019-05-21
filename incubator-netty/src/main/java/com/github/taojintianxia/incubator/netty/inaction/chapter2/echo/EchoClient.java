@@ -43,4 +43,8 @@ public class EchoClient {
             eventLoopGroup.shutdownGracefully().sync();
         }
     }
+
+    public static void main(String... args) throws Exception {
+        new EchoClient("localhost", 9990).start();
+    }
 }
