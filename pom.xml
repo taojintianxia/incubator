@@ -10,12 +10,14 @@
         <module>incubator-guava</module>
         <module>incubator-netty</module>
         <module>incubator-swagger</module>
+        <module>incubator-neo4j</module>
+        <module>incubator-mongodb</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <springboot.version>1.5.20.RELEASE</springboot.version>
+        <springboot.version>1.5.22.RELEASE</springboot.version>
         <netty.version>4.1.36.Final</netty.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <hibernate.validator.version>5.4.1.Final</hibernate.validator.version>
