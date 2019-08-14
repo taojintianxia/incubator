@@ -35,6 +35,7 @@
         <slf4j.version>1.7.26</slf4j.version>
         <logback.version>1.2.3</logback.version>
         <swagger.version>2.9.2</swagger.version>
+        <apache-commons-test.version>1.7</apache-commons-test.version>
     </properties>
 
     <dependencyManagement>
@@ -156,6 +157,13 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger.version}</version>
+            </dependency>
+
+            <!-- apache common-text -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${apache-commons-test.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -23,7 +23,7 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public void insert(Student student) {
-        mongoTemplate.save(student);
+        mongoTemplate.insert(student);
     }
 
     @Override
