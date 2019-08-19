@@ -12,6 +12,7 @@
         <module>incubator-swagger</module>
         <module>incubator-neo4j</module>
         <module>incubator-mongodb</module>
+        <module>incubator-nacos</module>
     </modules>
 
     <properties>
